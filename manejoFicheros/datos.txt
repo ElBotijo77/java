@@ -1,0 +1,2 @@
+Este ejemplo demuestra el uso de FileWriter para escribir la cadena \"¡Hola, mundo!\" en example.txt. La declaración try-with-resources garantiza que FileWriter se cierre automáticamente
+s
