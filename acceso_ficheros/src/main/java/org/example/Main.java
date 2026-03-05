@@ -8,6 +8,7 @@ public class Main {
         //AccesoDirecto.escribir("plueba.bin");
         AccesoDirecto.escribir2("plueba.bin");
         AccesoDirecto.escribir3("plueba.bin");
+        AccesoDirecto.escribir3("plueba.bin");
 
     }
 }

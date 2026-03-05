@@ -50,20 +50,44 @@ public class AccesoDirecto {
     {
 
         try {
+            System.out.println("\nLectura3");
             File f = new File(fichero);
-            f.delete();
             RandomAccessFile raf = new RandomAccessFile(fichero, "rw");
             String s = "ABCDEFG";
             raf.writeChars(s);
 
             raf.seek(0);
-            for (int i=0;i<raf.length()/2;i++)
+            for (int i=0;i<raf.length()/4;i++)
                 System.out.print(raf.readChar());
 
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void escribeCorreo(String fichero){
+        System.out.println("\nEscritura 4");
+
+        try{
+            File file = new File("correo.txt");
+            RandomAccessFile raf = new RandomAccessFile(fichero, "rw");
+            String s = "luis19luis@atlantida.es9.5";
+            raf.seek(0);
+            raf.writeChars("luis");
+            raf.writeInt(19);
+            raf.writeChars("luis@atlantida.es");
+            raf.writeFloat(9.5F);
+
+            for(int i=0; i<raf.length()/2; i++){
+                if(s.matches("\\d")) raf.writeChars(String.valueOf(s.charAt(i*2)));
+                if(!s.matches("\\d")) raf.writeInt(Integer.parseInt(String.valueOf(s.charAt(i*2))));
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }
