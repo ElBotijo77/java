@@ -7,16 +7,6 @@ public class Main {
 
         //AccesoDirecto.escribir("plueba.bin");
         AccesoDirecto.escribir2("plueba.bin");
-        AccesoDirecto.escribir3("plueba.bin");
-        AccesoDirecto.escribir3("plueba.bin");
 
-        //Probamos la alternativa
-        AccesoDirecto.escribirListaCompra();
-        AccesoDirecto.leerListaCompra("C:\\Users\\1DAM\\proyectoGit\\java\\acceso_ficheros\\lista-compra.bin");
-
-        IO.println("\n\nEjercicio practico");
-
-        AccesoDirecto.ejercicio5();
-        AccesoDirecto.leerEjercicio5("C:\\Users\\1DAM\\proyectoGit\\java\\acceso_ficheros\\ejercicio5.bin");
     }
 }
