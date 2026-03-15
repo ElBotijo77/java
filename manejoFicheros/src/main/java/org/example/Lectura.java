@@ -21,7 +21,7 @@ public class Lectura {
                 contador++;
             }
 
-            IO.println(new String(str) + " contaor: " + contador);
+            IO.println(new String(str) + " contador: " + contador);
             sc.close();
             str.delete(0, str.length());
 
@@ -35,7 +35,6 @@ public class Lectura {
 
         try{
             BufferedReader rb = new BufferedReader(new FileReader(ruta));
-
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

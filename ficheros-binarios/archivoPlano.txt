@@ -1,0 +1,5 @@
+Falta de Buffer: Estás usando FileWriter directamente. Como comentamos, esto escribe carácter a carácter en el disco. En un examen, añade un BufferedWriter para ganar puntos
+Falta de Buffer: Estás usando FileWriter directamente. Como comentamos, esto escribe carácter a carácter en el disco. En un examen, añade un BufferedWriter para ganar puntos
+Falta de Buffer: Estás usando FileWriter directamente. Como comentamos, esto escribe carácter a carácter en el disco. En un examen, añade un BufferedWriter para ganar puntos
+Falta de Buffer: Estás usando FileWriter directamente. Como comentamos, esto escribe carácter a carácter en el disco. En un examen, añade un BufferedWriter para ganar puntos
+Falta de Buffer: Estás usando FileWriter directamente. Como comentamos, esto escribe carácter a carácter en el disco. En un examen, añade un BufferedWriter para ganar puntos
