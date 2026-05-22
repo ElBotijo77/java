@@ -18,6 +18,14 @@ public class Producto {
     @Column(name = "num_unidades")
     private Integer numUnidades;
 
+    public Producto(Integer idProducto, String nombre, String marca, String categoria, Integer numUnidades) {
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.numUnidades = numUnidades;
+    }
+
     // Getters y Setters
     public Integer getIdProducto() { return idProducto; }
     public void setIdProducto(Integer id) { this.idProducto = id; }
