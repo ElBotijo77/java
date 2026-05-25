@@ -8,26 +8,34 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JDBCTest {
 
     @Test
     void insertar() {
         //Given
-        Producto esperado= new Producto(1, "Sandia", "AA", "Fruta", 200);
-        CRUD.conectar();
-        Statement stmt = CRUD.crearStatement(CRUD.conectar());
+
+        // Establecemos la conexion
+        Connection cn = CRUD.conectar();
+        Statement stmt = CRUD.crearStatement(cn);
+
         boolean resultadoInsertar = false;
+
         //When
         if (stmt!=null) {
-            resultadoInsertar = CRUD.insertar(stmt, 1, "Sandía", "AA", "Fruta", 200);
+            resultadoInsertar = CRUD.insertar(stmt, 1, "nuevo", "AA", "dsd", 200);
         }
+
         //Then
         assertTrue(resultadoInsertar);
 
         //Producto resultado = CRUD.leer(CRUD.conectar());
         //Metemos a mano las caracteristicas del producto para comprobar que es igual al introducido
-        assertEquals(new Producto(1, "Sandia", "AA", "Fruta", 200), esperado);
+        assertEquals(new Producto( 1, "nuevo", "AA", "dsd", 200), CRUD.leer(cn, 1));
+
+        System.out.println(new Producto( 1, "nuevo", "AA", "dsd", 200));
+        System.out.println(CRUD.leer(cn, 1).toString());
 
         // A continuacion se muestra el codigo necesario en SQL
 

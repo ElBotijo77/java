@@ -37,14 +37,14 @@ public class CRUD {
     }
 
     static public boolean insertar(Statement stmt, int id, String nombre,
-                                String codigo, String categoria, int cantidad)
+                                String marca, String categoria, int cantidad)
     {
         try {
-            String sql = "INSERT INTO actividad11.productos(id, nombre, codigo, " +
+            String sql = "INSERT INTO actividad11.productos(id, nombre, marca, " +
                     "categoria, cantidad)" +
                     " VALUES ('" + id + "'," +
                     " '" + nombre + "'," +
-                    " '" + codigo + "'," +
+                    " '" + marca + "'," +
                     " '" + categoria + "'," +
                     " '" + cantidad + "');";
             System.out.println(sql);
@@ -64,25 +64,28 @@ public class CRUD {
      * @param cn
      * @return
      */
-    static public String leer(Connection cn) {
-        String salida = "";
+    static public Producto leer(Connection cn, int id) {
 
-        String sql = "SELECT * FROM mensajes where nombre='Sandia'";
-        try(PreparedStatement pstmt = cn.prepareStatement(sql)) {
+        Producto producto = null;
+        String sql = "SELECT * FROM productos WHERE id = ?";
+
+        try (PreparedStatement pstmt = cn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
             ResultSet resultado = pstmt.executeQuery();
 
-            while (resultado.next()) {
-                salida = salida + resultado.getInt("id")
-                        + "   " + resultado.getString("nombre")
-                        + "   " + resultado.getString("mensaje")
-                        + "   " + resultado.getDate("fecha").toString()
-                        + "\n";
+            if (resultado.next()) {
+                producto = new Producto(
+                        resultado.getInt("id"),
+                        resultado.getString("nombre"),
+                        resultado.getString("marca"),
+                        resultado.getString("categoria"),
+                        resultado.getInt("cantidad")
+                );
             }
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }
-
-        return salida;
+        return producto;
     }
 
     /**
