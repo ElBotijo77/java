@@ -17,4 +17,7 @@ class LineaProducto {
     public int getNumUnidades() {
         return numUnidades;
     }
+
+    public static class RecepcionPedido {
+    }
 }

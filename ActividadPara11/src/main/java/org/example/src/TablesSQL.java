@@ -3,38 +3,47 @@ package org.example.src;
 public class TablesSQL {
 
 /*
-CREATE TABLE productos(
-    id_producto INT AUTO_INCREMENT,
-    nombre VARCHAR(20),
-    marca VARCHAR(30),
-    categoria VARCHAR(30),
-    num_unidades INT,
+CREATE DATABASE IF NOT EXISTS actividad11;
 
-    PRIMARY KEY(id_producto)
+CREATE USER 'admin11'@'localhost' IDENTIFIED BY 'Admin1234';
+
+-- Dar permiso total a la BD de agenda
+GRANT ALL ON actividad11.* TO 'admin11'@'localhost';
+
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    marca VARCHAR(50) NOT NULL,
+    categoria VARCHAR(50),
+    cantidad INT DEFAULT 0
 );
 
-CREATE TABLE pedidos(
-    id_pedido INT AUTO_INCREMENT,
-    id_producto INT, -- Debe permitir NULL si usas SET NULL
-    unidades_pedidas INT,
+CREATE TABLE pedidos (
+    id_pedido INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT NOT NULL,
+    unidades_pedidas INT NOT NULL,
     fecha_pedido DATETIME,
 
-    PRIMARY KEY(id_pedido),
-    CONSTRAINT rel_pedido_producto FOREIGN KEY(id_producto) REFERENCES productos(id_producto) ON DELETE SET NULL
+    CONSTRAINT fk_pedido_producto
+    FOREIGN KEY (id_producto)
+    REFERENCES productos(id)
 );
 
-INSERT INTO productos (nombre, marca, categoria, num_unidades) VALUES
-('Ratón G203', 'Logitech', 'Periféricos', 45),
-('Teclado Apex 3', 'SteelSeries', 'Periféricos', 20),
-('Monitor 24F', 'HP', 'Monitores', 15),
-('SSD Blue 1TB', 'Western Digital', 'Almacenamiento', 35),
-('RAM Vengeance 16GB', 'Corsair', 'Componentes', 50),
-('Core i5-12400F', 'Intel', 'Componentes', 12),
-('Galaxy Buds 2', 'Samsung', 'Audio', 25),
-('Alfombrilla G-Pad', 'Ozone', 'Accesorios', 60),
-('Disco Duro 2TB', 'Seagate', 'Almacenamiento', 18),
-('Cargador PowerPort', 'Anker', 'Accesorios', 40);
+select * from productos;
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM productos;
 
+INSERT INTO productos (id, nombre, marca, categoria, cantidad) VALUES
+(1, 'Auriculares Wave Pro', 'SoundMax', 'Electrónica', 15),
+(2, 'Botella Térmica Arctic', 'HydroPlus', 'Hogar', 30),
+(3, 'Teclado Mecánico Thunder', 'KeyForce', 'Informática', 8),
+(4, 'Zapatillas Runner X', 'MoveFit', 'Deporte', 20),
+(5, 'Cafetera Express Mini', 'CoffeeLux', 'Electrodomésticos', 5),
+(6, 'Mochila Urban Pack', 'TravelGo', 'Accesorios', 12),
+(7, 'Lámpara LED Smart', 'BrightHome', 'Iluminación', 18),
+(8, 'Tablet VisionTab 10', 'TechNova', 'Electrónica', 7),
+(9, 'Silla Ergonómica Flex', 'ComfortSeat', 'Muebles', 10),
+(10, 'Ratón Gaming Nitro', 'GameCore', 'Informática', 25);
 */
 
 }

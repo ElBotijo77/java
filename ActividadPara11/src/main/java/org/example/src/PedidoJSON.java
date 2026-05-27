@@ -1,26 +1,37 @@
 package org.example.src;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.example.model.Producto;
 
-// Clase principal que representa el pedido completo
+import java.sql.*;
+import java.util.*;
+
 public class PedidoJSON {
-    private String fechaEntrega;
-    private List<LineaProducto> productos;
 
-    // Constructor
-    public PedidoJSON(String fechaEntrega) {
-        this.fechaEntrega = fechaEntrega;
-        this.productos = new ArrayList<>();
+    public List<Producto> findAll() {
+
+        List<Producto> productos = new ArrayList<>();
+
+        String sql = "SELECT * FROM productos";
+
+        try (Connection conn = SupabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                productos.add(new Producto(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("marca"),
+                        rs.getString("categoria"),
+                        rs.getInt("cantidad")
+                ));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return productos;
     }
-
-    // Método para añadir productos al pedido
-    public void agregarProducto(int id, int unidades) {
-        this.productos.add(new LineaProducto(id, unidades));
-    }
-
-    // Getters (necesarios para leer los datos antes de meterlos en MySQL)
-    public String getFechaEntrega() { return fechaEntrega; }
-    public List<LineaProducto> getProductos() { return productos; }
 }
 
