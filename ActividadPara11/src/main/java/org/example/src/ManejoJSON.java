@@ -1,32 +1,62 @@
 package org.example.src;
 
+import org.example.model.Producto;
+import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import java.util.Map;
 
 public class ManejoJSON {
 
-    //Para la escritura de un archivo JSON utilizamos el siguiente codigo
+    // Record estático para que pueda usarse sin instancia de la clase externa
+    public static record Producto(int id, String nombre, String marca, String categoria, int cantidad) {}
 
-    // 1. Defines la estructura en una línea
-    public record Employee(String firstName, String lastName) {}
+    public static void main(String[] args) {
+        ObjectMapper mapper = new ObjectMapper(); // Una sola instancia, reutilizable
 
-    // 2. Creas la lista y mapeas a JSON con ObjectMapper
-    List<Employee> employees = List.of(new Employee("John", "Doe"));
-    Map<String, Object> mainObj = Map.of("employees", employees);
-/*
-    ObjectMapper mapper = new ObjectMapper();
-    String json = mapper.writeValueAsString(mainObj);
+        try {
+            //Escritura del archivo JSON
+            List<Producto> productos = List.of(
+                    new Producto(1, "Auriculares Wave Pro", "SoundMax", "Electrónica", 15),
+                    new Producto(2, "Botella Térmica Arctic", "HydroPlus", "Hogar", 30),
+                    new Producto(3, "Teclado Mecánico Thunder", "KeyForce", "Informática", 8),
+                    new Producto(4, "Zapatillas Runner X", "MoveFit", "Deporte", 20),
+                    new Producto(5, "Cafetera Express Mini", "CoffeeLux", "Electrodomésticos", 5),
+                    new Producto(6, "Mochila Urban Pack", "TravelGo", "Accesorios", 12),
+                    new Producto(7, "Lámpara LED Smart", "BrightHome", "Iluminación", 18),
+                    new Producto(8, "Tablet VisionTab 10", "TechNova", "Electrónica", 7),
+                    new Producto(9, "Silla Ergonómica Flex", "ComfortSeat", "Muebles", 10),
+                    new Producto(10, "Ratón Gaming Nitro", "GameCore", "Informática", 25)
+            );
 
+            Map<String, Object> mainObj = Map.of("productos", productos);
 
-    // Para la lectura usaremos
-    // El JSON de entrada
-    String jsonInput = "{\"firstName\":\"John\", \"lastName\":\"Doe\"}";
+            String json = mapper.writeValueAsString(mainObj);
+            //System.out.println("JSON generado: " + json);
 
-    ObjectMapper mapper = new ObjectMapper();
+            //Lectura del archivo JSON
+            try {
 
-    // Jackson lee el string y rellena el Record automáticamente
-    Employee emp = mapper.readValue(jsonInput, Employee.class);
+                // Lectura del JSON
+                Map<String, List<Producto>> data = mapper.readValue(
+                        json,
+                        new com.fasterxml.jackson.core.type.TypeReference<Map<String, List<Producto>>>() {}
+                );
 
-    System.out.println(emp.firstName()); // "John"
-*/
+                List<Producto> productosLeidos = data.get("productos");
+
+                for (Producto p : productosLeidos) {
+                    System.out.println(p);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
