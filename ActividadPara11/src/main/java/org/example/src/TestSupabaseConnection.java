@@ -4,8 +4,7 @@ import java.sql.Connection;
 
 public class TestSupabaseConnection {
 
-    public static void main(String[] args) {
-
+    public static void testConexion() {
         System.out.println("Probando conexión a Supabase...");
 
         try (Connection conn = SupabaseConnection.getConnection()) {

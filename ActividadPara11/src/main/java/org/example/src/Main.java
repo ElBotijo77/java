@@ -1,9 +1,11 @@
 package org.example.src;
 
 import org.example.model.CRUD;
+import org.example.model.Pedido;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,31 +24,23 @@ public class Main {
             El equipo recibe del comprador el archivo JSON con el pedido. Procesa el archivo y cara en su tabla de pedidos todos los productos solicitados.
             Se tiene que poder consultar el pedido de cada producto. Para ello se puede diseñar una pantalla en Java o una consulta en MySQL Workbench.
             Lógicamente, los roles de comprador y vendedor se intercambian.*/
+        System.out.println("AAAAAAAAAAAAAAAAAA");
 
+        //TestSupabaseConnection.testConexion();
 
-        Connection cn = CRUD.conectar();
-        if (cn != null) {
-            System.out.println("Conectado");
+        try {
+            PedidoJSON repo = new PedidoJSON();
+            List<Pedido> pedidos = repo.obtenerTodos();
+            System.out.println("AAAAAAAAAAAAAAAAAA");
+            pedidos.forEach(p ->
+                    System.out.println("Pedido #" + p.getIdPedido() +
+                            " | Producto: " + p.getProducto() +
+                            " | Unidades: " + p.getUnidadesPedidas() +
+                            " | Fecha: " + p.getFechaPedido())
+            );
 
-            try (Statement stmt = CRUD.crearStatement(cn)) {
-                //Crear
-               // INSERTAR UN PRODUCTO
-                // if (CRUD.crear(stmt, 11, "Juan", "juan@example.com",
-                 //       "Descanso", "2024-05-09"))
-                    System.out.println("Inserción OK");
-               // else System.out.println("Inserción KO");
-
-
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            /*
-            System.out.println(CRUD.leer(cn));
-            if (CRUD.borrar(cn,"Laura"))
-                System.out.println("Borrado OK");
-            else System.out.println("Borrado KO");
-
-            */
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
