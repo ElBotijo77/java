@@ -26,7 +26,7 @@ public class Main {
             Lógicamente, los roles de comprador y vendedor se intercambian.*/
         System.out.println("AAAAAAAAAAAAAAAAAA");
 
-        //TestSupabaseConnection.testConexion();
+        TestSupabaseConnection.testConexion();
 
         try {
             PedidoJSON repo = new PedidoJSON();

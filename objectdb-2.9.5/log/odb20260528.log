@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-28 08:07:02 #1 store] 
+Database 'C:\Users\1DAM\.m2\db\contactos.odb' has been recovered (tr. 1-5)
+
+[2026-05-28 08:07:02 #2 store] 
+Database 'C:\Users\1DAM\.m2\db\contactos.odb' is opened by 16876@DESKTOP-SRD064I
+
+[2026-05-28 08:07:02 #3 store] 
+Configuration path: C:\Users\1DAM\proyectoGit\java\objectdb-2.9.5\objectdb.conf
+
+[2026-05-28 08:07:41 #4 store] 
+Database 'C:\Users\1DAM\.m2\db\contactos.odb' is closed by 16876@DESKTOP-SRD064I
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-28 08:07:47 #1 store] 
+Database 'C:\Users\1DAM\.m2\db\contactos.odb' is opened by 1496@DESKTOP-SRD064I
+
