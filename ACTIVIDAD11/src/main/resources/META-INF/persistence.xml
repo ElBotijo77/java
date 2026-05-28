@@ -1,0 +1,16 @@
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <persistence-unit name="supabasePU">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>Producto</class>
+        <class>Pedido</class>
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:postgresql://db.tu_proyecto.supabase.co:5432/postgres"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="tu_contraseña"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+</persistence>
